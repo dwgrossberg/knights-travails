@@ -1,0 +1,29 @@
+{
+  "name": "knights-travails",
+  "version": "1.0.0",
+  "description": "Find the shortest possible route for a knight to move from one square to another on a chessboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwgrossberg/knights-travails.git"
+  },
+  "keywords": [],
+  "author": "Daniel Grossberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwgrossberg/knights-travails/issues"
+  },
+  "homepage": "https://github.com/dwgrossberg/knights-travails#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.10",
+    "eslint": "^8.23.0",
+    "jest": "^29.0.1",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
+  }
+}
