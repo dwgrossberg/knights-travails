@@ -6,13 +6,14 @@ describe("Board methods and properties", () => {
     expect(ChessSquare);
   });
   test("checkMove() will return true for values within the Board and false otherwise", () => {
-    expect(ChessSquare(1, 1, 8).checkMove()).toBe(true);
-    expect(ChessSquare(3, 6, 8).checkMove()).toBe(true);
-    expect(ChessSquare(8, 8, 8).checkMove()).toBe(true);
+    expect(ChessSquare(1, 1).checkMove()).toBe(true);
+    expect(ChessSquare(3, 6).checkMove()).toBe(true);
+    expect(ChessSquare(8, 8).checkMove()).toBe(true);
     expect(ChessSquare(12, 12, 15).checkMove()).toBe(true);
-    expect(ChessSquare(9, 8, 8).checkMove()).toBe(false);
+    expect(ChessSquare(9, 8).checkMove()).toBe(false);
   });
   test("possibleMoves() returns a list of all possible moves the Knight could make from any give spot on the board", () => {
+    console.log(ChessSquare(1, 1, 8).possibleMoves());
     expect(ChessSquare(1, 1, 8).possibleMoves()).toStrictEqual([
       [3, 2],
       [2, 3],

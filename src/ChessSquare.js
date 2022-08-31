@@ -1,9 +1,10 @@
-const ChessSquare = (x, y, n) => {
+const ChessSquare = (x, y, n, dis) => {
   //  object for storing a chessSquare's data
   const data = {
     xPosition: x,
     yPosition: y,
-    distance: 0,
+    boardSize: n || 8,
+    distance: dis || 0,
     precursor: null,
   };
 
@@ -20,16 +21,16 @@ const ChessSquare = (x, y, n) => {
   ];
 
   // utility function to check whether or not the move is inside the game board
-  const checkMove = (X = x, Y = y, N = n) => {
+  const checkMove = (X = x, Y = y, N = data.boardSize) => {
     if (X >= 1 && X <= N && Y >= 1 && Y <= N) return true;
     else return false;
   };
 
   // create all valid Knight moves (at each position)
-  const possibleMoves = (X = x, Y = y) => {
+  const possibleMoves = () => {
     const newMoves = KNIGHT_Combos.map((offset) => [
-      X + offset[0],
-      Y + offset[1],
+      data.xPosition + offset[0],
+      data.yPosition + offset[1],
     ]);
     // remove duplicate values
     const removeDuplicates = new Set(
