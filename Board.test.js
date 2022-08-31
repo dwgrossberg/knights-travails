@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import Square from "./Square";
+import chessSquare from "./chessSquare";
 
 describe("Board methods and properties", () => {
   test("happy path", () => {
-    expect(Square);
+    expect(chessSquare);
   });
 });
