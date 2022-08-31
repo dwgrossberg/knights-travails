@@ -4,18 +4,19 @@ const ChessSquare = (x, y, n) => {
     xPosition: x,
     yPosition: y,
     distance: 0,
+    precursor: null,
   };
 
   // all possible knight moves
-  const KnightCombos = [
-    [x + 2, y + 1],
-    [x + 1, y + 2],
-    [x + 2, y - 1],
-    [x + 1, y - 2],
-    [x - 2, y - 1],
-    [x - 1, y - 2],
-    [x - 1, y + 2],
-    [x - 2, y + 1],
+  const KNIGHT_Combos = [
+    [2, 1],
+    [2, -1],
+    [-2, 1],
+    [-2, -1],
+    [1, 2],
+    [1, -2],
+    [-1, 2],
+    [-1, -2],
   ];
 
   // utility function to check whether or not the move is inside the game board
@@ -24,11 +25,26 @@ const ChessSquare = (x, y, n) => {
     else return false;
   };
 
-  // fill it with objects - cells with x and y coords - each of which is marked not visited
+  // create all valid Knight moves (at each position)
+  const possibleMoves = (X = x, Y = y) => {
+    const newMoves = KNIGHT_Combos.map((offset) => [
+      X + offset[0],
+      Y + offset[1],
+    ]);
+    // remove duplicate values
+    const removeDuplicates = new Set(
+      newMoves.map((move) => JSON.stringify(move))
+    );
+    // re-map the values to an array & check that they are within the Board bounds
+    return Array.from(removeDuplicates)
+      .map((move) => JSON.parse(move))
+      .filter((x) => checkMove(x[0], x[1]));
+  };
 
   return {
     data,
     checkMove,
+    possibleMoves,
   };
 };
 
