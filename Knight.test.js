@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import Board from "./Board";
+import Knight from "./Knight";
 
 describe("Board methods and properties", () => {
   test("happy path", () => {
-    expect(Board);
+    expect(Knight);
   });
 });

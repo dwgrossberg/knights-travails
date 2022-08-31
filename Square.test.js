@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import knightsTravails from "./knightsTravails";
+import Square from "./Square";
 
 describe("Board methods and properties", () => {
   test("happy path", () => {
-    expect(knightsTravails);
+    expect(Square);
   });
 });
