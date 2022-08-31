@@ -1,9 +1,9 @@
-const ChessSquare = (x, y, n, dis) => {
+const ChessSquare = (x, y, dis) => {
   //  object for storing a chessSquare's data
   const data = {
     xPosition: x,
     yPosition: y,
-    boardSize: n || 8,
+    boardSize: 8,
     distance: dis || 0,
     precursor: null,
   };
@@ -19,6 +19,11 @@ const ChessSquare = (x, y, n, dis) => {
     [-1, 2],
     [-1, -2],
   ];
+
+  // update the size of the game board
+  const updateBoardSize = (n) => {
+    data.boardSize = n;
+  };
 
   // utility function to check whether or not the move is inside the game board
   const checkMove = (X = x, Y = y, N = data.boardSize) => {
@@ -44,6 +49,7 @@ const ChessSquare = (x, y, n, dis) => {
 
   return {
     data,
+    updateBoardSize,
     checkMove,
     possibleMoves,
   };
