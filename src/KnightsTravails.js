@@ -10,15 +10,19 @@ const KnightsTravails = (start, end) => {
 
   // start a queue and insert the beginning vertex as a ChessSquare
   const queue = [origin];
-  // initialize a 2D array to mark all visited vertexes on the game board
+  // initialize a 2D array to keep track of visited vertexes & mark them false
+  const visited = [...Array(8)].map(() => Array(8).fill(false));
+  // mark starting coordinates as visited (true)
+  visited[start[0]][start[1]] = true;
+  console.log(visited);
+  // loop while queue is not empty
+  // remove first element from the queue (current)
+  // base case - if current === destination, return its distance
+  // forEach possible space that the Knight can move to from its current square
+  // mark the square as visited (true)
+  // push that square to the queue
 
-  // mark the starting vertex as visited
-
-  // while queue is not empty
-
-  // shift() out first vertex
-
-  // insert all possible Knight moves from vertex into the queue
+  // otherwise not possible - return infinity
 };
 
 export default KnightsTravails;
