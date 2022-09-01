@@ -15,19 +15,30 @@ const KnightsTravails = (start, end) => {
   const visited = [...Array(n)].map(() => Array(n).fill(false));
   // mark starting coordinates as visited (true)
   visited[start[0] - 1][start[1] - 1] = true;
-  console.log(visited);
 
   // loop while queue is not empty
   while (queue.length !== 0) {
     // remove first element from the queue (current)
     const current = queue.shift();
     // base case - if current === destination, return its distance
-    if (current === destination) return current.data.dis;
+    if (
+      current.data.xPosition === destination.data.xPosition &&
+      current.data.yPosition === destination.data.yPosition
+    )
+      return current.data.dis;
     // forEach possible space that the Knight can move to from its current square
-    // mark the square as visited (true)
-    // push that square to the queue
+    current.possibleMoves().forEach((move) => {
+      // if the square has not been visited before
+      if (!visited[move[0] - 1][move[1] - 1]) {
+        // mark the square as visited (true)
+        visited[move[0] - 1][move[1] - 1] = true;
+        // push that square to the queue with an incremented distance of + 1
+        queue.push(ChessSquare(move[0], move[1], current.data.dis + 1));
+      }
+    });
   }
   // otherwise not possible - return infinity
+  return Infinity;
 };
 
 export default KnightsTravails;

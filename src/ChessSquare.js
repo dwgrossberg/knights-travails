@@ -4,7 +4,7 @@ const ChessSquare = (x, y, dis) => {
     xPosition: x,
     yPosition: y,
     boardSize: 8,
-    visited: false,
+    dis: dis || 0,
     previousSquare: null,
   };
 
