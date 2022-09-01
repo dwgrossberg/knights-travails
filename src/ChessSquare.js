@@ -4,8 +4,8 @@ const ChessSquare = (x, y, dis) => {
     xPosition: x,
     yPosition: y,
     boardSize: 8,
-    distance: dis || 0,
-    precursor: null,
+    visited: false,
+    previousSquare: null,
   };
 
   // all possible knight moves
@@ -41,7 +41,7 @@ const ChessSquare = (x, y, dis) => {
     const removeDuplicates = new Set(
       newMoves.map((move) => JSON.stringify(move))
     );
-    // re-map the values to an array & check that they are within the Board bounds
+    // re-map the values to an array & check that they are within the game board bounds
     return Array.from(removeDuplicates)
       .map((move) => JSON.parse(move))
       .filter((x) => checkMove(x[0], x[1]));
