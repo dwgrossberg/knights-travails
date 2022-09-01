@@ -1,10 +1,17 @@
 import ChessSquare from "./ChessSquare";
 
 // Return the minimum number of steps required for Knight to traverse from start to end
-const KnightsTravails = (start, end) => {
+const KnightsTravails = (start, end, N) => {
   // create nodes from starting and ending coords
   const origin = ChessSquare(...start);
   const destination = ChessSquare(...end);
+
+  // if n parameter if present, change the size of origin & destination ChessSquares
+  if (N) {
+    origin.updateBoardSize(N);
+    destination.updateBoardSize(N);
+  }
+
   // if start or end is not within the game board return null
   if (!origin.checkMove() || !destination.checkMove()) return null;
 
@@ -20,7 +27,7 @@ const KnightsTravails = (start, end) => {
   while (queue.length !== 0) {
     // remove first element from the queue (current)
     const current = queue.shift();
-    // base case - if current === destination, return its distance
+    // base case - if current coords === destination coords, return current distance
     if (
       current.data.xPosition === destination.data.xPosition &&
       current.data.yPosition === destination.data.yPosition
@@ -32,8 +39,11 @@ const KnightsTravails = (start, end) => {
       if (!visited[move[0] - 1][move[1] - 1]) {
         // mark the square as visited (true)
         visited[move[0] - 1][move[1] - 1] = true;
-        // push that square to the queue with an incremented distance of + 1
-        queue.push(ChessSquare(move[0], move[1], current.data.dis + 1));
+        // push that square to the queue with an incremented distance of + 1,
+        const newSquare = ChessSquare(move[0], move[1], current.data.dis + 1);
+        // changing the size of each ChessSquare if n parameter is present
+        if (N) newSquare.updateBoardSize(N);
+        queue.push(newSquare);
       }
     });
   }
