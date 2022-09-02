@@ -5,7 +5,6 @@ const ChessSquare = (x, y, dis) => {
     yPosition: y,
     boardSize: 8,
     dis: dis || 0,
-    previousSquare: null,
   };
 
   // all possible knight moves

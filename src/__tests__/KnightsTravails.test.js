@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import KnightsTravails from "./KnightsTravails";
+import KnightsTravails from "../KnightsTravails";
 
 describe("Board methods and properties", () => {
   test("happy path", () => {
@@ -12,6 +12,9 @@ describe("Board methods and properties", () => {
     expect(KnightsTravails([1, 1], [3, 2])).toBe(1);
     expect(KnightsTravails([8, 8], [8, 6])).toBe(2);
     expect(KnightsTravails([8, 8], [1, 1])).toBe(6);
+    expect(KnightsTravails([1, 1], [30, 30], 30)).toBe(20);
+  });
+  test("Knight Travails can accept an N parameter that will change the board size", () => {
     expect(KnightsTravails([1, 1], [30, 30], 30)).toBe(20);
   });
 });
