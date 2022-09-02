@@ -46,14 +46,15 @@ const KnightsTour = (x, y, N) => {
         if (path) {
           // otherwise, we have reached a successful solution
           // add the current coords to the path and return the path
-          path.push([x, y]);
+          path.push([nextX, nextY]);
           return path;
         }
       }
+      return false;
     }
-    return false;
   };
-  console.log(findPath(x, y, visited, N));
+
+  console.log(findPath(x, y, visited, N || 8));
 };
 
 export default KnightsTour;
