@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
-import KnightsTour from "../KnightsTour";
+import KnightsTourWarnsdorff from "../KnightsTourWarnsdorff";
 
-describe("KnightsTour function check", () => {
+describe("KnightsTourWarnsdorff function check", () => {
   test("happy path", () => {
-    expect(KnightsTour);
+    expect(KnightsTourWarnsdorff);
   });
-  test("KnightsTour can generate a path for a 5x5 board", () => {
-    expect(KnightsTour(1, 1, 5)).toStrictEqual([
+  test("KnightsTourWarnsdorff can generate a path for a 5x5 board", () => {
+    expect(KnightsTourWarnsdorff(1, 1, 5)).toStrictEqual([
       [1, 1],
       [5, 1],
       [4, 3],

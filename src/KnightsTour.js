@@ -31,7 +31,6 @@ const KnightsTour = (x, y, N) => {
     moves.forEach((move) => {
       if (boardCopy[move[0] - 1][move[1] - 1] === false) boardMoves.push(move);
     });
-    console.log(boardMoves, boardCopy);
     // base case - if there are no more moves available to Knight, check board for completion
     if (boardMoves.length === 0) {
       // if the board is complete, return the successful path
@@ -53,8 +52,8 @@ const KnightsTour = (x, y, N) => {
       return false;
     }
   };
-
-  console.log(findPath(x, y, visited, N || 8));
+  // call the function
+  return findPath(x, y, visited, N || 8);
 };
 
 export default KnightsTour;
