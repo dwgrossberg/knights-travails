@@ -6,6 +6,6 @@ describe("Knights Tour function check", () => {
     expect(KnightsTour);
   });
   test("Knight Travails returns null when invalid coords are input", () => {
-    KnightsTour(1, 1, 3);
+    KnightsTour(1, 1, 4);
   });
 });

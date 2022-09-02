@@ -43,11 +43,10 @@ const KnightsTour = (x, y, N) => {
       for (let [nextX, nextY] of boardMoves) {
         let path = findPath(nextX, nextY, boardCopy, boardSize);
         // if path equates to false, the loop will continue on to the next move
-        if (!!path) {
+        if (path) {
           // otherwise, we have reached a successful solution
           // add the current coords to the path and return the path
           path.push([x, y]);
-          console.log("Path: " + path);
           return path;
         }
       }
