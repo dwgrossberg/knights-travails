@@ -25,7 +25,11 @@ const ChessSquare = (x, y, dis) => {
   };
 
   // utility function to check whether or not the move is inside the game board
-  const checkMove = (X = x, Y = y, N = data.boardSize) => {
+  const checkMove = (
+    X = data.xPosition,
+    Y = data.yPosition,
+    N = data.boardSize
+  ) => {
     if (X >= 1 && X <= N && Y >= 1 && Y <= N) return true;
     else return false;
   };
