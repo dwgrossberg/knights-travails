@@ -5,6 +5,7 @@ describe("KnightsTourWarnsdorff function check", () => {
   test("happy path", () => {
     expect(KnightsTourWarnsdorff);
   });
+  console.log(KnightsTourWarnsdorff(1, 1, 6));
   test("KnightsTourWarnsdorff can generate a path for a 5x5 board", () => {
     expect(KnightsTourWarnsdorff(1, 1, 5)).toStrictEqual([
       [1, 1],

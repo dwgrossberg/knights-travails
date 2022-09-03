@@ -34,4 +34,5 @@ describe("KnightsTour function check", () => {
       [3, 2],
     ]);
   });
+  console.log(KnightsTour(1, 1, 6));
 });
