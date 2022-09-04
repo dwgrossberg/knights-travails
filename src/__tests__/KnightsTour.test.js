@@ -34,5 +34,7 @@ describe("KnightsTour function check", () => {
       [3, 2],
     ]);
   });
-  console.log(KnightsTour(1, 1, 6));
+  test("KnightsTour can generate a path for an 8x8 board", () => {
+    expect(KnightsTour(1, 1, 8)).toStrictEqual([]);
+  });
 });
