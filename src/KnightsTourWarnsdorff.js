@@ -20,7 +20,6 @@ const KnightsTourWarnsdorff = (x, y, N) => {
     boardCopy[xCoord - 1][yCoord - 1] = true;
     let moves = current.possibleMoves();
     const getBoardMoves = (array) => {
-      console.log(array);
       const boardMoves = [];
       array.forEach((move) => {
         if (boardCopy[move[0] - 1][move[1] - 1] === false)
@@ -38,15 +37,20 @@ const KnightsTourWarnsdorff = (x, y, N) => {
         const weightedMoves = [];
         // find the number of possible paths for each KnightMove and return them in order from fewest to most
         for (const [x, y] of KnightMoves) {
-          const currentMoves = getBoardMoves(ChessSquare(x, y).possibleMoves());
-          const weight = currentMoves.length;
+          const currentSquare = ChessSquare(x, y);
+          console.log(currentSquare);
+          // const currentMoves = getBoardMoves(currentSquare.possibleMoves());
+          const weight = currentSquare.possibleMoves().length;
           weightedMoves.push({ move: [x, y], weight });
         }
         return weightedMoves
           .sort((a, b) => b.weight - a.weight)
           .map((weighted) => weighted.move);
       };
-      moves = warnsdorff(moves);
+      // console.log(moves);
+      moves = warnsdorff(getBoardMoves(moves));
+      console.log(moves);
+
       for (let [nextX, nextY] of moves) {
         let path = findPath(nextX, nextY, boardCopy, boardSize);
         if (path) {
