@@ -1,3 +1,3 @@
-import Knight from "./Knight";
+import displayController from "../src/domStuff";
 
-Knight;
+displayController.runKnights();

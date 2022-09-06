@@ -4,7 +4,10 @@
   "description": "Find the shortest possible route for a knight to move from one square to another on a chessboard",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
     "webpack-dev-server": "^4.10.1"
   },
   "dependencies": {
+    "babel-loader": "^8.2.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
   }
 }
