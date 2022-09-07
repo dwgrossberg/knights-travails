@@ -6,6 +6,7 @@ const ChessSquare = (x, y, dis) => {
     boardSize: 8,
     dis: dis || 0,
     parent: null,
+    board: null,
   };
 
   // all possible knight moves
@@ -54,6 +55,12 @@ const ChessSquare = (x, y, dis) => {
       .filter((x) => checkMove(x[0], x[1]));
   };
 
+  const createBoard = () => {
+    data.board = [...Array(data.boardSize)].map(() =>
+      Array(data.boardSize).fill("")
+    );
+  };
+
   return {
     data,
     updateBoardSize,
@@ -61,6 +68,7 @@ const ChessSquare = (x, y, dis) => {
     setParent,
     checkMove,
     possibleMoves,
+    createBoard,
   };
 };
 
