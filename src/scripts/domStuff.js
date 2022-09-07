@@ -7,46 +7,40 @@ const displayController = (() => {
     return Math.floor(Math.random() * ((max || 8) - 4 + 1) + 4);
   };
 
-  const runKnights = (boardSize) => {
+  const travailKnight = (boardSize) => {
     const startTravails = performance.now();
-    KnightsTravails(
-      getRandomNumberUpTo(boardSize),
-      getRandomNumberUpTo(boardSize),
-      boardSize
-    );
+    KnightsTravails([1, 1], [boardSize, boardSize], boardSize);
     const endTravails = performance.now();
     console.log(
       "KnightsTravails performance time: " +
         `${((endTravails - startTravails) / 1000).toFixed(2)} seconds`
     );
+  };
 
+  const tourKnight = (boardSize) => {
     const startTour = performance.now();
-    KnightsTour(
-      getRandomNumberUpTo(boardSize),
-      getRandomNumberUpTo(boardSize),
-      boardSize
-    );
+    KnightsTour(1, 1, boardSize);
     const endTour = performance.now();
     console.log(
       "KnightsTour performance time: " +
         `${((endTour - startTour) / 1000).toFixed(2)} seconds`
     );
+  };
 
-    const startTourW = performance.now();
-    KnightsTourWarnsdorff(
-      getRandomNumberUpTo(boardSize),
-      getRandomNumberUpTo(boardSize),
-      boardSize
-    );
-    const endTourW = performance.now();
+  const tourKnightWarnsdorff = (boardSize) => {
+    const startTour = performance.now();
+    KnightsTourWarnsdorff(1, 1, boardSize);
+    const endTour = performance.now();
     console.log(
-      "KnightsTravailsW performance time: " +
-        `${((endTourW - startTourW) / 1000).toFixed(2)} seconds`
+      "KnightsTourWarnsdorff performance time: " +
+        `${((endTour - startTour) / 1000).toFixed(2)} seconds`
     );
   };
 
   return {
-    runKnights,
+    travailKnight,
+    tourKnight,
+    tourKnightWarnsdorff,
   };
 })();
 

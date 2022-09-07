@@ -1,5 +1,8 @@
+// import favicon from "../assets/favicon.ico";
+import githubIcon from "../../src/assets/gitHubIconWhite.png";
+import "../index.scss";
 import displayController from "./domStuff";
 
-console.log("hi");
+document.getElementById("github-icon").src = githubIcon;
 
-displayController.runKnights(5);
+displayController;
