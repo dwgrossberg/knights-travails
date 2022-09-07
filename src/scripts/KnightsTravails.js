@@ -3,8 +3,8 @@ import ChessSquare from "./ChessSquare";
 // Return the minimum number of steps required for Knight to traverse from start to end
 const KnightsTravails = (start, end, N) => {
   // create nodes from starting and ending coords
-  const origin = ChessSquare(...start);
-  const destination = ChessSquare(...end);
+  const origin = ChessSquare(start[0], start[1]);
+  const destination = ChessSquare(end[0], end[1]);
 
   // if n parameter if present, change the size of origin & destination ChessSquares
   if (N) {

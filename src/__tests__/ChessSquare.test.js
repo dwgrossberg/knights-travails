@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import ChessSquare from "../ChessSquare";
+import ChessSquare from "../scripts/ChessSquare";
 
 describe("ChessSquare methods and properties", () => {
   test("happy path", () => {

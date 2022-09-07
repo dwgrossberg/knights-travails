@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import KnightsTourWarnsdorff from "../KnightsTourWarnsdorff";
+import KnightsTourWarnsdorff from "../scripts/KnightsTourWarnsdorff";
 
 describe("KnightsTourWarnsdorff function check", () => {
   test("happy path", () => {

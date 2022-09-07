@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import KnightsTour from "../KnightsTour";
+import KnightsTour from "../scripts/KnightsTour";
 
 describe("KnightsTour function check", () => {
   test("happy path", () => {

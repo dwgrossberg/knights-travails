@@ -4,13 +4,13 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/scripts/index.js",
   devtool: "inline-source-map",
   devServer: {
     static: "./dist",
   },
   entry: {
-    index: "./src/index.js",
+    index: "./src/scripts/index.js",
   },
   output: {
     filename: "main.js",
