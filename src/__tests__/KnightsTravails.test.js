@@ -17,7 +17,28 @@ describe("Knights Travails function check", () => {
     expect(KnightsTravails([1, 1], [30, 30], 30)[0]).toBe(20);
   });
   test("Knight Travails will output the correct path", () => {
-    console.log(KnightsTravails([1, 1], [30, 30], 30)[1]);
-    expect(KnightsTravails([1, 1], [30, 30], 30)[1]).toBe(20);
+    expect(KnightsTravails([1, 1], [30, 30], 30)[1]).toStrictEqual([
+      [1, 1],
+      [3, 2],
+      [5, 3],
+      [7, 4],
+      [9, 5],
+      [11, 6],
+      [13, 7],
+      [15, 8],
+      [17, 9],
+      [19, 10],
+      [21, 11],
+      [23, 12],
+      [24, 14],
+      [25, 16],
+      [26, 18],
+      [27, 20],
+      [28, 22],
+      [29, 24],
+      [30, 26],
+      [29, 28],
+      [30, 30],
+    ]);
   });
 });

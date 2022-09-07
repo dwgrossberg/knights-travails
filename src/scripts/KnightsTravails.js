@@ -34,7 +34,21 @@ const KnightsTravails = (start, end, N) => {
       current.data.xPosition === destination.data.xPosition &&
       current.data.yPosition === destination.data.yPosition
     ) {
-      return [current.data.dis, path];
+      // get path for shortest route
+      // start a path var to save travail path
+      destination.setParent(current.data.parent);
+      const path = [destination];
+      while (!path.includes(origin)) {
+        const prevSquare = path[0].getParent();
+        path.unshift(prevSquare);
+      }
+      // path.unshift(origin);
+      // path.map((move) => [move.data.xPosition, move.data.yPosition]);
+      const returnPath = [];
+      path.forEach((move) =>
+        returnPath.push([move.data.xPosition, move.data.yPosition])
+      );
+      return [current.data.dis, returnPath];
     }
     // forEach possible space that the Knight can move to from its current square
     current.possibleMoves().forEach((move) => {
@@ -46,21 +60,11 @@ const KnightsTravails = (start, end, N) => {
         const newSquare = ChessSquare(move[0], move[1], current.data.dis + 1);
         // changing the size of each ChessSquare if n parameter is present
         if (N) newSquare.updateBoardSize(N);
-        // set move parent pointer to current node
+        // set parent pointer to current node
         newSquare.setParent(current);
         queue.push(newSquare);
       }
     });
-    // get path for shortest route
-    // start a path var to save travail path
-    const path = [destination];
-    let currentSquare = end;
-    while (currentSquare[0] !== start[0] || currentSquare[1] !== start[1]) {
-      console.log(origin, path);
-      path.unshift(currentSquare);
-      currentSquare = path[0].getParent();
-    }
-    path.map((move) => [move.data.xPosition, move.data.yPosition]);
   }
   // otherwise not possible - return infinity
   return Infinity;
