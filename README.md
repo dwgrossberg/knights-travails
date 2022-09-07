@@ -14,4 +14,8 @@ Find the shortest possible route for a knight to move from one square to another
 
 ## Post-Project Thoughts:
 
-- Dijkstra's algorithm
+- Knights Tour different approaches -> Hamiltonian path problems -> Backtracking -> Warnsdorff’s heuristic / algo
+
+- todo:
+  board
+  localStorage avg. timer counter

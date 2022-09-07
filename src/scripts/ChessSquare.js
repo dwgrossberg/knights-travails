@@ -5,6 +5,7 @@ const ChessSquare = (x, y, dis) => {
     yPosition: y,
     boardSize: 8,
     dis: dis || 0,
+    parent: null,
   };
 
   // all possible knight moves
@@ -23,6 +24,9 @@ const ChessSquare = (x, y, dis) => {
   const updateBoardSize = (n) => {
     data.boardSize = n;
   };
+
+  const getParent = () => data.parent;
+  const setParent = (newParent) => (data.parent = newParent);
 
   // utility function to check whether or not the move is inside the game board
   const checkMove = (
@@ -53,6 +57,8 @@ const ChessSquare = (x, y, dis) => {
   return {
     data,
     updateBoardSize,
+    getParent,
+    setParent,
     checkMove,
     possibleMoves,
   };

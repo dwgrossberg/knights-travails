@@ -2,4 +2,4 @@ import displayController from "./domStuff";
 
 console.log("hi");
 
-displayController.runKnights();
+displayController.runKnights(5);
