@@ -3,20 +3,32 @@ import KnightsTour from "./KnightsTour";
 import KnightsTourWarnsdorff from "./KnightsTourWarnsdorff";
 
 const displayController = (() => {
-  const renderBoard = (board, DOMelem) => {};
-
-  const getRandomNumberUpTo = (max) => {
-    return Math.floor(Math.random() * ((max || 8) - 4 + 1) + 4);
-  };
-
-  let N = 6;
+  let N = 5;
 
   const updateN = (newN) => {
     N = newN;
   };
 
+  const renderBoard = () => {
+    const boardDOM = document.getElementById("board");
+    for (let i = 0; i < N; i++) {
+      const row = document.createElement("div");
+      row.classList.add("row");
+      for (let j = 0; j < N; j++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        row.appendChild(square);
+      }
+      boardDOM.appendChild(row);
+    }
+  };
+  renderBoard();
+
+  const getRandomNumberUpTo = (max) => {
+    return Math.floor(Math.random() * ((max || 8) - 4 + 1) + 4);
+  };
+
   const travailKnight = (boardSize) => {
-    console.log("hi");
     const startTravails = performance.now();
     const result = KnightsTravails([1, 1], [boardSize, boardSize], boardSize);
     // const result = output.map();
@@ -25,9 +37,9 @@ const displayController = (() => {
       "KnightsTravails performance time: " +
         `${((endTravails - startTravails) / 1000).toFixed(
           2
-        )} seconds - RESULT: ` +
-        result[1]
+        )} seconds - RESULT: `
     );
+    console.log(result[1]);
   };
   const travailKnightDOM = document.getElementById("travail-Knight");
   travailKnightDOM.addEventListener("mousedown", () => {
@@ -40,9 +52,9 @@ const displayController = (() => {
     const endTour = performance.now();
     console.log(
       "KnightsTour performance time: " +
-        `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: ` +
-        result
+        `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
+    console.log(result);
   };
   const tourKnightDOM = document.getElementById("tour-Knight");
   tourKnightDOM.addEventListener("mousedown", () => {
@@ -55,9 +67,9 @@ const displayController = (() => {
     const endTour = performance.now();
     console.log(
       "KnightsTourWarnsdorff performance time: " +
-        `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: ` +
-        result
+        `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
+    console.log(result);
   };
   const tourKnightWDOM = document.getElementById("tour-Knight-Warnsdorff");
   tourKnightWDOM.addEventListener("mousedown", () => {

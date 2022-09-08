@@ -35,6 +35,7 @@ describe("KnightsTourWarnsdorff function check", () => {
     ]);
   });
   test("KnightsTour can generate a path for an 7x7 board", () => {
+    console.log(KnightsTourWarnsdorff(1, 1, 7));
     expect(KnightsTourWarnsdorff(1, 1, 7)).toStrictEqual([
       [1, 1],
       [7, 1],

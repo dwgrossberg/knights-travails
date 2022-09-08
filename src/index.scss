@@ -28,9 +28,30 @@ body {
   grid-template: 125px 1fr 50px / 1fr;
 }
 
+.header {
+  background-color: navajowhite;
+}
+
 .content {
   display: grid;
   grid-template: 1fr / 0.6fr 0.4fr;
+  #board {
+    place-self: center;
+    .row {
+      width: 100%;
+      display: flex;
+    }
+    .square {
+      height: 40px;
+      width: 40px;
+      background-color: rgba(95, 158, 160, 0.831);
+      outline: 0.25px dotted ghostwhite;
+      &:hover {
+        background-color: cadetblue;
+        outline: 0.5px dotted ghostwhite;
+      }
+    }
+  }
   .which-Knight {
     display: flex;
     justify-content: center;
