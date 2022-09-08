@@ -3,7 +3,7 @@ import KnightsTour from "./KnightsTour";
 import KnightsTourWarnsdorff from "./KnightsTourWarnsdorff";
 
 const displayController = (() => {
-  let N = 5;
+  let N = 6;
 
   const updateN = (newN) => {
     N = newN;
