@@ -34,4 +34,7 @@ describe("KnightsTourWarnsdorff function check", () => {
       [3, 2],
     ]);
   });
+  test("8x8", () => {
+    console.log(KnightsTourWarnsdorff(1, 1, 8));
+  });
 });

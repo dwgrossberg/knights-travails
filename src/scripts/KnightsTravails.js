@@ -42,8 +42,6 @@ const KnightsTravails = (start, end, N) => {
         const prevSquare = path[0].getParent();
         path.unshift(prevSquare);
       }
-      // path.unshift(origin);
-      // path.map((move) => [move.data.xPosition, move.data.yPosition]);
       const returnPath = [];
       path.forEach((move) =>
         returnPath.push([move.data.xPosition, move.data.yPosition])

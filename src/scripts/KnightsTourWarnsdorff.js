@@ -3,6 +3,8 @@ import ChessSquare from "./ChessSquare";
 // find Knights Tour from any [x, y] coord on a board of N x N size
 // using Warnsdorff's heuristics + backtracking-based recursion to build the correct path solution
 
+// *** //
+
 const KnightsTourWarnsdorff = (x, y, N) => {
   // Original Knights Tour algorithm
   const origin = ChessSquare(x, y);
