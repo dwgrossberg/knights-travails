@@ -5,20 +5,39 @@ import KnightsTourWarnsdorff from "./KnightsTourWarnsdorff";
 // Simple module to play with different board sizes and results
 
 const displayController = (() => {
+  // initial starting board size
   let N = 6;
 
   const updateN = (newN) => {
     N = newN;
   };
 
+  const boardDOM = document.getElementById("board");
+  const boardRange = document.getElementById("myRange");
+
+  // set slider to start
+  boardRange.value = 6;
+  const updateBoardSize = () => {
+    const squares = Array.from(document.getElementsByClassName("square"));
+    removeBoard();
+    updateN(boardRange.value);
+    renderBoard();
+    squares.forEach((s) => {
+      s.style.height = 300 / `${boardRange.value}` + "px";
+      s.style.width = 300 / `${boardRange.value}` + "px";
+    });
+  };
+  boardRange.addEventListener("input", updateBoardSize);
+
   const renderBoard = () => {
-    const boardDOM = document.getElementById("board");
     for (let i = 0; i < N; i++) {
       const row = document.createElement("div");
       row.classList.add("row");
       for (let j = 0; j < N; j++) {
         const square = document.createElement("div");
         square.classList.add("square");
+        square.style.height = 300 / `${boardRange.value}` + "px";
+        square.style.width = 300 / `${boardRange.value}` + "px";
         i % 2 === 0
           ? j % 2 === 0
             ? square.classList.add("odd")
@@ -32,6 +51,12 @@ const displayController = (() => {
     }
   };
   renderBoard();
+
+  const removeBoard = () => {
+    while (boardDOM.firstChild) {
+      boardDOM.removeChild(boardDOM.lastChild);
+    }
+  };
 
   const getRandomNumberUpTo = (max) => {
     return Math.floor(Math.random() * ((max || 8) - 4 + 1) + 4);
