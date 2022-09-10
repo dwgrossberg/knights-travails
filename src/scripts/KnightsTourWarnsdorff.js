@@ -39,7 +39,7 @@ const KnightsTourWarnsdorff = (x, y, N) => {
       weightedMoves.push({ move: [x, y], weight });
     }
     return weightedMoves
-      .sort((a, b) => b.weight - a.weight)
+      .sort((a, b) => a.weight - b.weight)
       .map((weighted) => weighted.move);
   };
 

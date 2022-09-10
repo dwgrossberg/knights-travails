@@ -36,7 +36,11 @@ const displayController = (() => {
     // const result = output.map();
     const endTravails = performance.now();
     console.log(
-      "KnightsTravails performance time: " +
+      "KnightsTravails performance time for " +
+        `${N}` +
+        "x" +
+        `${N}` +
+        " board size: " +
         `${((endTravails - startTravails) / 1000).toFixed(
           2
         )} seconds - RESULT: `
@@ -53,7 +57,11 @@ const displayController = (() => {
     const result = KnightsTour(1, 1, boardSize);
     const endTour = performance.now();
     console.log(
-      "KnightsTour performance time: " +
+      "KnightsTour performance time for " +
+        `${N}` +
+        "x" +
+        `${N}` +
+        " board size: " +
         `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
     console.log(result);
@@ -68,7 +76,11 @@ const displayController = (() => {
     const result = KnightsTourWarnsdorff(1, 1, boardSize);
     const endTour = performance.now();
     console.log(
-      "KnightsTourWarnsdorff performance time: " +
+      "KnightsTourWarnsdorff performance time for " +
+        `${N}` +
+        "x" +
+        `${N}` +
+        " board size: " +
         `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
     console.log(result);

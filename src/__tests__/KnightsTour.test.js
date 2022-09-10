@@ -87,4 +87,7 @@ describe("KnightsTour function check", () => {
       [3, 2],
     ]);
   });
+  test("KnightsTour can generate a path for an 7x7 board", () => {
+    console.log(KnightsTour(1, 1, 8));
+  });
 });
