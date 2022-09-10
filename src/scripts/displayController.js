@@ -5,7 +5,7 @@ import KnightsTourWarnsdorff from "./KnightsTourWarnsdorff";
 // Simple module to play with different board sizes and results
 
 const displayController = (() => {
-  let N = 6;
+  let N = 7;
 
   const updateN = (newN) => {
     N = newN;
