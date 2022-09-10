@@ -11,13 +11,33 @@
   <body>
     <div class="container">
       <div class="header">Knight's Playground</div>
+      <div class="display-info">
+        Drag the Knight onto the chessboard or click one of the buttons below to
+        get started...
+      </div>
       <div class="content">
-        <div id="board"></div>
+        <div class="board">
+          <div id="board"></div>
+          <div class="size-wrapper">
+            <p>Change chessboard size:</p>
+            <input
+              type="range"
+              min="6"
+              max="50"
+              value="50"
+              class="slider"
+              id="myRange"
+            />
+          </div>
+        </div>
         <div class="Knight-controls">
           <div id="Knight-img-div">
             <img id="Knight-img-image" src="" alt="" />
           </div>
-          <div id="perfomance"></div>
+          <div class="performance">
+            Algorithm Performance Time:
+            <div id="performance-time">12.4 seconds</div>
+          </div>
         </div>
         <div class="which-Knight">
           <div id="travail-Knight">Travail Knight</div>
