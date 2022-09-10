@@ -19,6 +19,13 @@ const displayController = (() => {
       for (let j = 0; j < N; j++) {
         const square = document.createElement("div");
         square.classList.add("square");
+        i % 2 === 0
+          ? j % 2 === 0
+            ? square.classList.add("odd")
+            : square.classList.add("even")
+          : j % 2 === 0
+          ? square.classList.add("even")
+          : square.classList.add("odd");
         row.appendChild(square);
       }
       boardDOM.appendChild(row);

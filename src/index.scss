@@ -43,18 +43,24 @@ body {
   grid-template: 1fr / 0.4fr 0.2fr 0.4fr;
   #board {
     place-self: center;
+    height: 300px;
+    width: 300px;
+    outline: 0.5px solid rgba(0, 0, 0, 0.5);
+    .even {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
     .row {
       width: 100%;
       display: flex;
     }
     .square {
-      height: 40px;
-      width: 40px;
-      background-color: rgba(95, 158, 160, 0.831);
+      height: 50px;
+      width: 50px;
       outline: 0.25px dotted ghostwhite;
       &:hover {
         background-color: cadetblue;
         outline: 0.5px dotted ghostwhite;
+        cursor: pointer;
       }
     }
   }
@@ -62,11 +68,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     gap: 100px;
     #Knight-img-image {
       width: 40px;
       height: 40px;
       transform: rotateX(180);
+      cursor: pointer;
     }
   }
   .which-Knight {
