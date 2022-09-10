@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
 $background-color: rgb(248, 248, 255);
 $board-color: rgba(248, 248, 255, 0.9);
 $ship-color: #e2c08c;
@@ -18,6 +20,7 @@ body {
   overflow-x: hidden;
   font-family: $main-font;
   min-width: 400px;
+  background-color: $background-color;
 }
 
 .container {
@@ -29,12 +32,15 @@ body {
 }
 
 .header {
-  background-color: navajowhite;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Arvo", "serif";
+  font-size: 22px;
+  place-self: center;
 }
 
 .content {
   display: grid;
-  grid-template: 1fr / 0.6fr 0.4fr;
+  grid-template: 1fr / 0.4fr 0.2fr 0.4fr;
   #board {
     place-self: center;
     .row {
@@ -52,22 +58,45 @@ body {
       }
     }
   }
+  .Knight-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    #Knight-img-image {
+      width: 40px;
+      height: 40px;
+      transform: rotateX(180);
+    }
+  }
   .which-Knight {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     #travail-Knight,
     #tour-Knight,
     #tour-Knight-Warnsdorff {
-      width: 150px;
-      height: 50px;
-      background-color: greenyellow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 175px;
+      height: 55px;
+      padding: 5px;
+      background-color: rgba(95, 158, 160, 0.831);
+      color: ghostwhite;
+      border-radius: 7px;
       font-family: $main-font;
-      font-size: 12px;
+      font-size: 14px;
       text-align: center;
-      line-height: 50px;
+      line-height: 18px;
       cursor: pointer;
+      &:hover {
+        background-color: rgb(58, 156, 159);
+        outline: 0.5px dotted ghostwhite;
+        font-weight: 700;
+      }
     }
   }
 }
@@ -75,7 +104,7 @@ body {
 .footer {
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   grid-area: 3 / 1 / 4 / 2;
   .made-by {
     color: $background-color;
