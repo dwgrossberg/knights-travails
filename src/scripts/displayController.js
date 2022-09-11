@@ -33,6 +33,7 @@ const displayController = (() => {
     });
     document.getElementById("board-size").textContent =
       boardRange.value + " x " + boardRange.value;
+    document.getElementById("Knight-img-image").style.opacity = "1";
   };
   boardRange.addEventListener("input", updateBoardSize);
 
@@ -62,7 +63,7 @@ const displayController = (() => {
     squares = Array.from(document.getElementsByClassName("square"));
     squares.forEach((s) => {
       s.addEventListener("mousedown", () => {
-        console.log(s);
+        placeKnight(s);
       });
     });
   };
@@ -78,15 +79,29 @@ const displayController = (() => {
     return Math.floor(Math.random() * (max - 1 + 1) + 1);
   };
 
+  const placeKnight = (spot) => {
+    if (document.getElementById("icon")) {
+      document.getElementById("icon").parentElement.style.backgroundColor = "";
+      document.getElementById("icon").remove();
+    }
+    const knightIcon = document.getElementById("Knight-img-image");
+    let transform = " rotateX(180deg)";
+    const icon = document.createElement("img");
+    icon.setAttribute("id", "icon");
+    icon.src = KnightIcon;
+    icon.style.transform += transform;
+    icon.style.height = 300 / N + "px";
+    icon.style.width = 300 / N + "px";
+    spot.style.backgroundColor = "cadetblue";
+    spot.appendChild(icon);
+    knightIcon.style.opacity = "0";
+    knightIcon.style.cursor = "default";
+  };
+
   const randomlyPlace = () => {
     const randomSpot = getRandomNumberUpTo(N * N);
     const spot = document.querySelector(`[data-num="${randomSpot}"]`);
-    const icon = document.createElement("img");
-    icon.src = KnightIcon;
-    let transform = " rotateX(180deg)";
-    icon.style.transform += transform;
-    icon.style.height = 300 / N + "px";
-    spot.appendChild(icon);
+    placeKnight(spot);
   };
   const randomlyPlaceDOM = document.getElementById("randomly-place");
   randomlyPlaceDOM.addEventListener("mousedown", randomlyPlace);
