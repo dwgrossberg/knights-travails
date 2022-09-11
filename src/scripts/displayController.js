@@ -1,12 +1,17 @@
 import KnightsTravails from "./KnightsTravails";
 import KnightsTour from "./KnightsTour";
 import KnightsTourWarnsdorff from "./KnightsTourWarnsdorff";
+import KnightIcon from "../assets/knight.png";
 
 // Simple module to play with different board sizes and results
 
 const displayController = (() => {
-  // initial starting board size
+  // variable to hold boardSize
   let N = 6;
+
+  // variables to hold x & y coords
+  let xCoord;
+  let yCoord;
 
   const updateN = (newN) => {
     N = newN;
@@ -14,11 +19,11 @@ const displayController = (() => {
 
   const boardDOM = document.getElementById("board");
   const boardRange = document.getElementById("myRange");
+  let squares;
 
   // set slider to start
   boardRange.value = 6;
   const updateBoardSize = () => {
-    const squares = Array.from(document.getElementsByClassName("square"));
     removeBoard();
     updateN(boardRange.value);
     renderBoard();
@@ -26,16 +31,21 @@ const displayController = (() => {
       s.style.height = 300 / `${boardRange.value}` + "px";
       s.style.width = 300 / `${boardRange.value}` + "px";
     });
+    document.getElementById("board-size").textContent =
+      boardRange.value + " x " + boardRange.value;
   };
   boardRange.addEventListener("input", updateBoardSize);
 
   const renderBoard = () => {
+    let counter = 1;
     for (let i = 0; i < N; i++) {
       const row = document.createElement("div");
       row.classList.add("row");
       for (let j = 0; j < N; j++) {
         const square = document.createElement("div");
         square.classList.add("square");
+        square.dataset.num = counter;
+        counter++;
         square.style.height = 300 / `${boardRange.value}` + "px";
         square.style.width = 300 / `${boardRange.value}` + "px";
         i % 2 === 0
@@ -49,6 +59,12 @@ const displayController = (() => {
       }
       boardDOM.appendChild(row);
     }
+    squares = Array.from(document.getElementsByClassName("square"));
+    squares.forEach((s) => {
+      s.addEventListener("mousedown", () => {
+        console.log(s);
+      });
+    });
   };
   renderBoard();
 
@@ -59,8 +75,21 @@ const displayController = (() => {
   };
 
   const getRandomNumberUpTo = (max) => {
-    return Math.floor(Math.random() * ((max || 8) - 4 + 1) + 4);
+    return Math.floor(Math.random() * (max - 1 + 1) + 1);
   };
+
+  const randomlyPlace = () => {
+    const randomSpot = getRandomNumberUpTo(N * N);
+    const spot = document.querySelector(`[data-num="${randomSpot}"]`);
+    const icon = document.createElement("img");
+    icon.src = KnightIcon;
+    let transform = " rotateX(180deg)";
+    icon.style.transform += transform;
+    icon.style.height = 300 / N + "px";
+    spot.appendChild(icon);
+  };
+  const randomlyPlaceDOM = document.getElementById("randomly-place");
+  randomlyPlaceDOM.addEventListener("mousedown", randomlyPlace);
 
   const travailKnight = (boardSize) => {
     const startTravails = performance.now();
