@@ -79,12 +79,12 @@ const displayController = (() => {
     return Math.floor(Math.random() * (max - 1 + 1) + 1);
   };
 
+  const knightIcon = document.getElementById("Knight-img-image");
   const placeKnight = (spot) => {
     if (document.getElementById("icon")) {
       document.getElementById("icon").parentElement.style.backgroundColor = "";
       document.getElementById("icon").remove();
     }
-    const knightIcon = document.getElementById("Knight-img-image");
     let transform = " rotateX(180deg)";
     const icon = document.createElement("img");
     icon.setAttribute("id", "icon");
@@ -106,9 +106,24 @@ const displayController = (() => {
   const randomlyPlaceDOM = document.getElementById("randomly-place");
   randomlyPlaceDOM.addEventListener("mousedown", randomlyPlace);
 
+  const dragAndDrop = () => {
+    boardDOM.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+    boardDOM.addEventListener("drop", (e) => {
+      console.log(e.target);
+      placeKnight(e.target);
+    });
+  };
+  dragAndDrop();
+
   const travailKnight = (boardSize) => {
     const startTravails = performance.now();
-    const result = KnightsTravails([1, 1], [boardSize, boardSize], boardSize);
+    const result = KnightsTravails(
+      [1, 1],
+      [Number(boardSize), Number(boardSize)],
+      Number(boardSize)
+    );
     // const result = output.map();
     const endTravails = performance.now();
     console.log(
@@ -130,7 +145,7 @@ const displayController = (() => {
 
   const tourKnight = (boardSize) => {
     const startTour = performance.now();
-    const result = KnightsTour(1, 1, boardSize);
+    const result = KnightsTour(1, 1, Number(boardSize));
     const endTour = performance.now();
     console.log(
       "KnightsTour performance time for " +
@@ -149,7 +164,7 @@ const displayController = (() => {
 
   const tourKnightWarnsdorff = (boardSize) => {
     const startTour = performance.now();
-    const result = KnightsTourWarnsdorff(1, 1, boardSize);
+    const result = KnightsTourWarnsdorff(1, 1, Number(boardSize));
     const endTour = performance.now();
     console.log(
       "KnightsTourWarnsdorff performance time for " +
