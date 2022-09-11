@@ -63,6 +63,7 @@ const displayController = (() => {
     squares = Array.from(document.getElementsByClassName("square"));
     squares.forEach((s) => {
       s.addEventListener("mousedown", () => {
+        console.log(Number(s.dataset.num).toFixed(0) / N, s.dataset.num % N);
         placeKnight(s);
       });
     });
