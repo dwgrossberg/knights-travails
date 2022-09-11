@@ -63,7 +63,8 @@ const displayController = (() => {
     squares = Array.from(document.getElementsByClassName("square"));
     squares.forEach((s) => {
       s.addEventListener("mousedown", () => {
-        console.log(Number(s.dataset.num).toFixed(0) / N, s.dataset.num % N);
+        const test = arrayToXY(s);
+        console.log(test, xyToArray(test));
         placeKnight(s);
       });
     });
@@ -74,6 +75,19 @@ const displayController = (() => {
     while (boardDOM.firstChild) {
       boardDOM.removeChild(boardDOM.lastChild);
     }
+  };
+
+  // turn 1-D array into [x, y] coords
+  const arrayToXY = (square) => {
+    return [
+      square.dataset.num % N === 0 ? Number(N) : square.dataset.num % N,
+      Math.round(Math.ceil(Number(square.dataset.num) / N)),
+    ];
+  };
+
+  // turn [x, y] coords into 1-D array
+  const xyToArray = (coord) => {
+    return coord[1] * N + coord[0] - N;
   };
 
   const getRandomNumberUpTo = (max) => {
