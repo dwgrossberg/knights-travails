@@ -12,6 +12,8 @@ const displayController = (() => {
   // variables to hold x & y coords
   let xCoord;
   let yCoord;
+  let xCoord_START;
+  let yCoord_START;
 
   const updateN = (newN) => {
     N = newN;
@@ -65,6 +67,9 @@ const displayController = (() => {
       s.addEventListener("mousedown", () => {
         const test = arrayToXY(s);
         console.log(test, xyToArray(test));
+        const coords = arrayToXY(s);
+        xCoord = coords[0];
+        yCoord = coords[1];
         placeKnight(s);
       });
     });
@@ -116,6 +121,9 @@ const displayController = (() => {
   const randomlyPlace = () => {
     const randomSpot = getRandomNumberUpTo(N * N);
     const spot = document.querySelector(`[data-num="${randomSpot}"]`);
+    const coords = arrayToXY(spot);
+    xCoord = coords[0];
+    yCoord = coords[1];
     placeKnight(spot);
   };
   const randomlyPlaceDOM = document.getElementById("randomly-place");
@@ -126,32 +134,58 @@ const displayController = (() => {
       e.preventDefault();
     });
     boardDOM.addEventListener("drop", (e) => {
-      console.log(e.target);
+      const coords = arrayToXY(e.target);
+      xCoord = coords[0];
+      yCoord = coords[1];
       placeKnight(e.target);
     });
   };
   dragAndDrop();
 
   const travailKnight = (boardSize) => {
-    const startTravails = performance.now();
-    const result = KnightsTravails(
-      [1, 1],
-      [Number(boardSize), Number(boardSize)],
-      Number(boardSize)
-    );
-    // const result = output.map();
-    const endTravails = performance.now();
     console.log(
-      "KnightsTravails performance time for " +
-        `${N}` +
-        "x" +
-        `${N}` +
-        " board size: " +
-        `${((endTravails - startTravails) / 1000).toFixed(
-          2
-        )} seconds - RESULT: `
+      xCoord,
+      yCoord,
+      xCoord_START,
+      yCoord_START,
+      [xCoord, yCoord] !== [xCoord_START, yCoord_START]
     );
-    console.log(result[1]);
+
+    if (xCoord && yCoord) {
+      xCoord_START = xCoord;
+      yCoord_START = yCoord;
+      xCoord = undefined;
+      yCoord = undefined;
+      document.getElementById("display-info").innerText =
+        "Choose an ending square for the Knight";
+    }
+    if (
+      xCoord &&
+      yCoord &&
+      xCoord_START &&
+      yCoord_START &&
+      [xCoord, yCoord] !== [xCoord_START, yCoord_START]
+    ) {
+      console.log(xCoord, yCoord, xCoord_START, yCoord_START);
+      const startTravails = performance.now();
+      const result = KnightsTravails(
+        [xCoord_START, yCoord_START],
+        [xCoord, yCoord],
+        Number(boardSize)
+      );
+      const endTravails = performance.now();
+      console.log(
+        "KnightsTravails performance time for " +
+          `${N}` +
+          "x" +
+          `${N}` +
+          " board size: " +
+          `${((endTravails - startTravails) / 1000).toFixed(
+            2
+          )} seconds - RESULT: `
+      );
+      console.log(result[1]);
+    }
   };
   const travailKnightDOM = document.getElementById("travail-Knight");
   travailKnightDOM.addEventListener("mousedown", () => {
