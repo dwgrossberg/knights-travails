@@ -151,22 +151,20 @@ const displayController = (() => {
       [xCoord, yCoord] !== [xCoord_START, yCoord_START]
     );
 
-    if (xCoord && yCoord) {
+    if (xCoord && yCoord && !xCoord_START && !yCoord_START) {
       xCoord_START = xCoord;
       yCoord_START = yCoord;
       xCoord = undefined;
       yCoord = undefined;
       document.getElementById("display-info").innerText =
         "Choose an ending square for the Knight";
-    }
-    if (
+    } else if (
       xCoord &&
       yCoord &&
       xCoord_START &&
       yCoord_START &&
-      [xCoord, yCoord] !== [xCoord_START, yCoord_START]
+      xyToArray([xCoord, yCoord]) !== xyToArray([xCoord_START, yCoord_START])
     ) {
-      console.log(xCoord, yCoord, xCoord_START, yCoord_START);
       const startTravails = performance.now();
       const result = KnightsTravails(
         [xCoord_START, yCoord_START],
@@ -185,6 +183,10 @@ const displayController = (() => {
           )} seconds - RESULT: `
       );
       console.log(result[1]);
+      xCoord = undefined;
+      yCoord = undefined;
+      xCoord_START = undefined;
+      yCoord_START = undefined;
     }
   };
   const travailKnightDOM = document.getElementById("travail-Knight");
