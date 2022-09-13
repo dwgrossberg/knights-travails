@@ -101,9 +101,14 @@ const displayController = (() => {
 
   const knightIcon = document.getElementById("Knight-img-image");
   const placeKnight = (spot) => {
+    console.log(document.getElementById("START"));
     if (document.getElementById("icon")) {
       document.getElementById("icon").parentElement.style.backgroundColor = "";
       document.getElementById("icon").remove();
+      if (document.getElementById("START")) {
+        document.getElementById("START").style.backgroundColor =
+          "rgba(95, 158, 160, 0.831)";
+      }
     }
     let transform = " rotateX(180deg)";
     const icon = document.createElement("img");
@@ -142,15 +147,19 @@ const displayController = (() => {
   };
   dragAndDrop();
 
-  const travailKnight = (boardSize) => {
-    console.log(
-      xCoord,
-      yCoord,
-      xCoord_START,
-      yCoord_START,
-      [xCoord, yCoord] !== [xCoord_START, yCoord_START]
-    );
+  const replaceKnightIcons = () => {
+    document.getElementById("icon").parentElement.style.backgroundColor = "";
+    document.getElementById("icon").remove();
+    knightIcon.style.opacity = "";
+    knightIcon.style.cursor = "";
+  };
 
+  const travailKnightDOM = document.getElementById("travail-Knight");
+  const tourKnightDOM = document.getElementById("tour-Knight");
+  const tourKnightWarnsdorffDOM = document.getElementById(
+    "tour-Knight-Warnsdorff"
+  );
+  const travailKnight = (boardSize) => {
     if (xCoord && yCoord && !xCoord_START && !yCoord_START) {
       xCoord_START = xCoord;
       yCoord_START = yCoord;
@@ -158,6 +167,17 @@ const displayController = (() => {
       yCoord = undefined;
       document.getElementById("display-info").innerText =
         "Choose an ending square for the Knight";
+      const index = xyToArray([xCoord_START, yCoord_START]);
+      const spot = document.querySelector(`[data-num="${index}"]`);
+      spot.setAttribute("id", "START");
+      console.log(spot);
+      spot.style.backgroundColor = "rgba(95, 158, 160, 0.831)";
+      travailKnightDOM.style.backgroundColor = "cadetblue";
+      travailKnightDOM.style.fontWeight = "bold";
+      tourKnightDOM.style.backgroundColor = "gainsboro";
+      tourKnightDOM.style.pointerEvents = "none";
+      tourKnightWarnsdorffDOM.style.backgroundColor = "gainsboro";
+      tourKnightWarnsdorffDOM.style.pointerEvents = "none";
     } else if (
       xCoord &&
       yCoord &&
@@ -187,9 +207,15 @@ const displayController = (() => {
       yCoord = undefined;
       xCoord_START = undefined;
       yCoord_START = undefined;
+      travailKnightDOM.style.backgroundColor = "";
+      travailKnightDOM.style.fontWeight = "";
+      tourKnightDOM.style.backgroundColor = "";
+      tourKnightDOM.style.pointerEvents = "";
+      tourKnightWarnsdorffDOM.style.backgroundColor = "";
+      tourKnightWarnsdorffDOM.style.pointerEvents = "";
+      replaceKnightIcons();
     }
   };
-  const travailKnightDOM = document.getElementById("travail-Knight");
   travailKnightDOM.addEventListener("mousedown", () => {
     travailKnight(N);
   });
@@ -208,7 +234,6 @@ const displayController = (() => {
     );
     console.log(result);
   };
-  const tourKnightDOM = document.getElementById("tour-Knight");
   tourKnightDOM.addEventListener("mousedown", () => {
     tourKnight(N);
   });
@@ -227,8 +252,7 @@ const displayController = (() => {
     );
     console.log(result);
   };
-  const tourKnightWDOM = document.getElementById("tour-Knight-Warnsdorff");
-  tourKnightWDOM.addEventListener("mousedown", () => {
+  tourKnightWarnsdorffDOM.addEventListener("mousedown", () => {
     tourKnightWarnsdorff(N);
   });
 
