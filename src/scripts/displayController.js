@@ -150,10 +150,17 @@ const displayController = (() => {
     if (document.getElementById("icon")) {
       document.getElementById("icon").parentElement.style.backgroundColor = "";
       document.getElementById("icon").remove();
-      knightIcon.style.opacity = "";
-      knightIcon.style.cursor = "";
     }
   };
+
+  const clearBoard = () => {
+    document.getElementById("display-info").innerText =
+      "Drag the Knight onto the chessboard or click one of the buttons below to get started...";
+    replaceKnightIcons();
+    removeBoard();
+    renderBoard();
+  };
+  document.getElementById("reset").addEventListener("mousedown", clearBoard);
 
   const performanceTime = document.getElementById("performance-time");
   const travailKnightDOM = document.getElementById("travail-Knight");
@@ -186,6 +193,8 @@ const displayController = (() => {
       yCoord_START &&
       xyToArray([xCoord, yCoord]) !== xyToArray([xCoord_START, yCoord_START])
     ) {
+      document.getElementById("display-info").innerText =
+        "Knight is travailing...";
       const startTravails = performance.now();
       const result = KnightsTravails(
         [xCoord_START, yCoord_START],
@@ -209,15 +218,15 @@ const displayController = (() => {
       result[1].forEach((coord) => {
         const index = xyToArray(coord);
         const spot = document.querySelector(`[data-num="${index}"]`);
-        console.log(spot);
         spot.style.backgroundColor = "cadetblue";
+        spot.style.opacity = result[1].indexOf(coord) / result[1].length + 0.3;
+        spot.innerText = result[1].indexOf(coord) + 1;
+        spot.style.transform = "scaleY(-1)";
+        spot.style.display = "flex";
+        spot.style.justifyContent = "center";
+        spot.style.alignItems = "center";
       });
       console.log(result[1]);
-      document.getElementById("START").style.backgroundColor = "pink";
-      const index = xyToArray([xCoord, yCoord]);
-      document.querySelector(`[data-num="${index}"]`).style.backgroundColor =
-        "orange";
-
       xCoord = undefined;
       yCoord = undefined;
       xCoord_START = undefined;
@@ -229,9 +238,6 @@ const displayController = (() => {
       tourKnightWarnsdorffDOM.style.backgroundColor = "";
       tourKnightWarnsdorffDOM.style.pointerEvents = "";
       document.getElementById("START").setAttribute("id", "");
-      replaceKnightIcons();
-      // removeBoard();
-      // renderBoard();
     }
   };
   travailKnightDOM.addEventListener("mousedown", () => {

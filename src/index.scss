@@ -129,12 +129,14 @@ body {
       cursor: pointer;
       margin-bottom: -40px;
     }
-    #randomly-place {
+    #randomly-place,
+    #reset {
       border: 0.5px solid rgba(0, 0, 0, 0.5);
       padding: 7px 12px;
       border-radius: 7px;
       font-size: 13px;
       color: rgba(0, 0, 0, 0.7);
+      margin-bottom: -40px;
       &:hover {
         background-color: rgba(0, 0, 0, 0.5);
         color: ghostwhite;
