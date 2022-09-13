@@ -147,10 +147,12 @@ const displayController = (() => {
   dragAndDrop();
 
   const replaceKnightIcons = () => {
-    document.getElementById("icon").parentElement.style.backgroundColor = "";
-    document.getElementById("icon").remove();
-    knightIcon.style.opacity = "";
-    knightIcon.style.cursor = "";
+    if (document.getElementById("icon")) {
+      document.getElementById("icon").parentElement.style.backgroundColor = "";
+      document.getElementById("icon").remove();
+      knightIcon.style.opacity = "";
+      knightIcon.style.cursor = "";
+    }
   };
 
   const performanceTime = document.getElementById("performance-time");
@@ -203,6 +205,19 @@ const displayController = (() => {
       );
       performanceTime.innerText =
         ((endTravails - startTravails) / 1000).toFixed(2) + " seconds";
+      document.getElementById("squares-visited").innerText = result[1].length;
+      result[1].forEach((coord) => {
+        const index = xyToArray(coord);
+        const spot = document.querySelector(`[data-num="${index}"]`);
+        console.log(spot);
+        spot.style.backgroundColor = "cadetblue";
+      });
+      console.log(result[1]);
+      document.getElementById("START").style.backgroundColor = "pink";
+      const index = xyToArray([xCoord, yCoord]);
+      document.querySelector(`[data-num="${index}"]`).style.backgroundColor =
+        "orange";
+
       xCoord = undefined;
       yCoord = undefined;
       xCoord_START = undefined;
@@ -213,9 +228,10 @@ const displayController = (() => {
       tourKnightDOM.style.pointerEvents = "";
       tourKnightWarnsdorffDOM.style.backgroundColor = "";
       tourKnightWarnsdorffDOM.style.pointerEvents = "";
-      document.getElementById("START").style.backgroundColor = "";
       document.getElementById("START").setAttribute("id", "");
       replaceKnightIcons();
+      // removeBoard();
+      // renderBoard();
     }
   };
   travailKnightDOM.addEventListener("mousedown", () => {

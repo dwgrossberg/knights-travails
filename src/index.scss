@@ -147,11 +147,11 @@ body {
       flex-direction: column;
       gap: 10px;
       align-items: center;
-    }
-    .performance,
-    #performance-time {
       font-size: 13px;
       color: rgba(0, 0, 0, 0.7);
+    }
+    #performance-time {
+      margin-bottom: 5px;
     }
   }
   .which-Knight {
