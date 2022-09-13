@@ -101,7 +101,6 @@ const displayController = (() => {
 
   const knightIcon = document.getElementById("Knight-img-image");
   const placeKnight = (spot) => {
-    console.log(document.getElementById("START"));
     if (document.getElementById("icon")) {
       document.getElementById("icon").parentElement.style.backgroundColor = "";
       document.getElementById("icon").remove();
@@ -154,6 +153,7 @@ const displayController = (() => {
     knightIcon.style.cursor = "";
   };
 
+  const performanceTime = document.getElementById("performance-time");
   const travailKnightDOM = document.getElementById("travail-Knight");
   const tourKnightDOM = document.getElementById("tour-Knight");
   const tourKnightWarnsdorffDOM = document.getElementById(
@@ -170,7 +170,6 @@ const displayController = (() => {
       const index = xyToArray([xCoord_START, yCoord_START]);
       const spot = document.querySelector(`[data-num="${index}"]`);
       spot.setAttribute("id", "START");
-      console.log(spot);
       spot.style.backgroundColor = "rgba(95, 158, 160, 0.831)";
       travailKnightDOM.style.backgroundColor = "cadetblue";
       travailKnightDOM.style.fontWeight = "bold";
@@ -202,7 +201,8 @@ const displayController = (() => {
             2
           )} seconds - RESULT: `
       );
-      console.log(result[1]);
+      performanceTime.innerText =
+        ((endTravails - startTravails) / 1000).toFixed(2) + " seconds";
       xCoord = undefined;
       yCoord = undefined;
       xCoord_START = undefined;
@@ -213,6 +213,8 @@ const displayController = (() => {
       tourKnightDOM.style.pointerEvents = "";
       tourKnightWarnsdorffDOM.style.backgroundColor = "";
       tourKnightWarnsdorffDOM.style.pointerEvents = "";
+      document.getElementById("START").style.backgroundColor = "";
+      document.getElementById("START").setAttribute("id", "");
       replaceKnightIcons();
     }
   };
