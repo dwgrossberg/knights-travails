@@ -36,6 +36,8 @@ const displayController = (() => {
     document.getElementById("board-size").textContent =
       boardRange.value + " x " + boardRange.value;
     document.getElementById("Knight-img-image").style.opacity = "1";
+    randomlyPlaceDOM.style.pointerEvents = "";
+    travailKnightDOM.style.pointerEvents = "";
   };
   boardRange.addEventListener("input", updateBoardSize);
 
@@ -259,9 +261,27 @@ const displayController = (() => {
     travailKnight(N);
   });
 
+  const showCoords = (result, coord) => {
+    const index = xyToArray(coord);
+    const spot = document.querySelector(`[data-num="${index}"]`);
+    spot.style.backgroundColor = "cadetblue";
+    spot.style.opacity = result.indexOf(coord) / result.length + 0.2;
+    spot.innerText = result.indexOf(coord) + 1;
+    spot.style.transform = "scaleY(-1)";
+    spot.style.display = "flex";
+    spot.style.justifyContent = "center";
+    spot.style.alignItems = "center";
+    squares.forEach((s) => {
+      s.style.pointerEvents = "none";
+    });
+    randomlyPlaceDOM.style.pointerEvents = "none";
+    travailKnightDOM.style.pointerEvents = "none";
+  };
+
   const tourKnight = (boardSize) => {
+    if (!xCoord && !yCoord) return;
     const startTour = performance.now();
-    const result = KnightsTour(1, 1, Number(boardSize));
+    const result = KnightsTour(xCoord, yCoord, Number(boardSize));
     const endTour = performance.now();
     console.log(
       "KnightsTour performance time for " +
@@ -271,6 +291,11 @@ const displayController = (() => {
         " board size: " +
         `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
+    performanceTime.innerText = ((endTour - startTour) / 1000).toFixed(2);
+    document.getElementById("squares-visited").innerText = result.length;
+    result.forEach((coord) => {
+      showCoords(result, coord);
+    });
     console.log(result);
   };
   tourKnightDOM.addEventListener("mousedown", () => {
@@ -278,8 +303,9 @@ const displayController = (() => {
   });
 
   const tourKnightWarnsdorff = (boardSize) => {
+    if (!xCoord && !yCoord) return;
     const startTour = performance.now();
-    const result = KnightsTourWarnsdorff(1, 1, Number(boardSize));
+    const result = KnightsTourWarnsdorff(xCoord, yCoord, Number(boardSize));
     const endTour = performance.now();
     console.log(
       "KnightsTourWarnsdorff performance time for " +
@@ -289,6 +315,11 @@ const displayController = (() => {
         " board size: " +
         `${((endTour - startTour) / 1000).toFixed(2)} seconds - RESULT: `
     );
+    performanceTime.innerText = ((endTour - startTour) / 1000).toFixed(2);
+    document.getElementById("squares-visited").innerText = result.length;
+    result.forEach((coord) => {
+      showCoords(result, coord);
+    });
     console.log(result);
   };
   tourKnightWarnsdorffDOM.addEventListener("mousedown", () => {
