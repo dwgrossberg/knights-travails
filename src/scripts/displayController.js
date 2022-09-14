@@ -305,6 +305,7 @@ const displayController = (() => {
     });
     tourKnightDOM.style.pointerEvents = "none";
     tourKnightWarnsdorffDOM.style.pointerEvents = "none";
+    document.getElementById("display-info").innerText = "Tour completed";
     console.log(result);
   };
   tourKnightDOM.addEventListener("mousedown", () => {
@@ -331,6 +332,7 @@ const displayController = (() => {
     });
     tourKnightDOM.style.pointerEvents = "none";
     tourKnightWarnsdorffDOM.style.pointerEvents = "none";
+    document.getElementById("display-info").innerText = "Tour completed";
     console.log(result);
   };
   tourKnightWarnsdorffDOM.addEventListener("mousedown", () => {
