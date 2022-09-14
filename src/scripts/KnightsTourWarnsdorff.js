@@ -1,6 +1,4 @@
 import ChessSquare from "./ChessSquare";
-import displayController from "./displayController";
-import revealAlgo from "./displayController";
 
 // find Knights Tour from any [x, y] coord on a board of N x N size
 // using Warnsdorff's heuristics + backtracking-based recursion to build the correct path solution
