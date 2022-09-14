@@ -56,7 +56,7 @@ const KnightsTourWarnsdorff = (x, y, N) => {
       else return false;
     } else {
       const warnsdorfffMoves = warnsdorff(boardMoves, boardCopy, boardSize);
-      console.log(current, warnsdorfffMoves);
+      console.log(current, moves, warnsdorfffMoves);
 
       for (let [nextX, nextY] of warnsdorfffMoves) {
         let path = findPath(nextX, nextY, boardCopy, boardSize);

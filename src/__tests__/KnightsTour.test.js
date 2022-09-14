@@ -5,7 +5,7 @@ describe("KnightsTour function check", () => {
   test("happy path", () => {
     expect(KnightsTour);
   });
-  test("KnightsTour can generate a path for a 5x5 board", () => {
+  test.only("KnightsTour can generate a path for a 5x5 board", () => {
     expect(KnightsTour(1, 1, 5)).toStrictEqual([
       [1, 1],
       [5, 1],
@@ -87,7 +87,7 @@ describe("KnightsTour function check", () => {
       [3, 2],
     ]);
   });
-  test("KnightsTour can generate a path for an 7x7 board", () => {
+  test("KnightsTour can generate a path for an 8x8 board", () => {
     console.log(KnightsTour(1, 1, 8));
   });
 });

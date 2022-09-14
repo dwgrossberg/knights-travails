@@ -34,7 +34,7 @@ const KnightsTour = (x, y, N) => {
     // base case - if there are no more moves available to Knight, check board for completion
     if (boardMoves.length === 0) {
       // if the board is complete, return the successful path
-      if (everySquareVisited(boardCopy)) return [[x, y]];
+      if (everySquareVisited(boardCopy)) return [[xCoord, yCoord]];
       // if the board is not complete, move on to the next branch
       else return false;
       // otherwise recursively call function to find each possible move for next boardMove
@@ -45,7 +45,9 @@ const KnightsTour = (x, y, N) => {
         if (path) {
           // otherwise, we have reached a successful solution
           // add the current coords to the path and return the path
-          path.push([nextX, nextY]);
+          path.push([xCoord, yCoord]);
+          // const test = ChessSquare(path[0][0], path[0][1]).possibleMoves();
+
           return path;
         }
       }
@@ -53,7 +55,7 @@ const KnightsTour = (x, y, N) => {
     }
   };
   // call the function
-  return findPath(x, y, visited, N || 8);
+  return findPath(x, y, visited, N || 8).reverse();
 };
 
 export default KnightsTour;

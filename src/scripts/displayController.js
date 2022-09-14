@@ -178,6 +178,8 @@ const displayController = (() => {
     document.getElementById("squares-visited").innerText = "";
     performanceTime.innerText = "";
     knightIcon.style.opacity = "";
+    boardRange.value = 6;
+    updateBoardSize();
   };
   document.getElementById("reset").addEventListener("mousedown", clearBoard);
 
