@@ -1,3 +1,7 @@
+~ view a project demo here: (https://dwgrossberg.github.io/knights-travails/) ~
+
+---
+
 # knights-travails
 
 Finds the shortest possible route for a knight to move from one square to another on a chessboard of variable size N, and returns the Knights path.
@@ -16,7 +20,7 @@ Written in vanilla JavaScript, tests run via Jest, transpiled with Babel & compi
 
 ---
 
-### Project Thoughts & Approaches:
+### Project Thoughts & Notes:
 
 - Graphs, graphs, graphs. I'd already been thinking about graphs after recently readying through [Think Like a Git](https://think-like-a-git.net/) and gaining a basic understanding of graph theory. This project pushed me further down the graph rabbit-hole and taught me numerous other methods for initiating a breadth-first search (BFS) traversal within a graph.
 
