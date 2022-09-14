@@ -1,4 +1,4 @@
-~ view a project demo here: (https://dwgrossberg.github.io/knights-travails/) ~
+~ view a project demo [here](https://dwgrossberg.github.io/knights-travails/) ~
 
 ---
 
