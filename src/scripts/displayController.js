@@ -64,14 +64,7 @@ const displayController = (() => {
     }
     squares = Array.from(document.getElementsByClassName("square"));
     squares.forEach((s) => {
-      s.addEventListener("mousedown", () => {
-        const test = arrayToXY(s);
-        console.log(test, xyToArray(test));
-        const coords = arrayToXY(s);
-        xCoord = coords[0];
-        yCoord = coords[1];
-        placeKnight(s);
-      });
+      s.addEventListener("mousedown", () => addKnightToBoard(s));
     });
   };
   renderBoard();
@@ -93,6 +86,13 @@ const displayController = (() => {
   // turn [x, y] coords into 1-D array
   const xyToArray = (coord) => {
     return coord[1] * N + coord[0] - N;
+  };
+
+  const addKnightToBoard = (s) => {
+    const coords = arrayToXY(s);
+    xCoord = coords[0];
+    yCoord = coords[1];
+    placeKnight(s);
   };
 
   const getRandomNumberUpTo = (max) => {
@@ -150,19 +150,35 @@ const displayController = (() => {
     if (document.getElementById("icon")) {
       document.getElementById("icon").parentElement.style.backgroundColor = "";
       document.getElementById("icon").remove();
+      knightIcon.style.opacity = "";
+      knightIcon.style.cursor = "";
     }
   };
 
+  const performanceTime = document.getElementById("performance-time");
   const clearBoard = () => {
     document.getElementById("display-info").innerText =
       "Drag the Knight onto the chessboard or click one of the buttons below to get started...";
     replaceKnightIcons();
     removeBoard();
     renderBoard();
+    randomlyPlaceDOM.style.pointerEvents = "";
+    travailKnightDOM.style.backgroundColor = "";
+    travailKnightDOM.style.fontWeight = "";
+    tourKnightDOM.style.backgroundColor = "";
+    tourKnightDOM.style.pointerEvents = "";
+    tourKnightWarnsdorffDOM.style.backgroundColor = "";
+    tourKnightWarnsdorffDOM.style.pointerEvents = "";
+    xCoord = undefined;
+    yCoord = undefined;
+    xCoord_START = undefined;
+    yCoord_START = undefined;
+    document.getElementById("squares-visited").innerText = "";
+    performanceTime.innerText = "";
+    knightIcon.style.opacity = "";
   };
   document.getElementById("reset").addEventListener("mousedown", clearBoard);
 
-  const performanceTime = document.getElementById("performance-time");
   const travailKnightDOM = document.getElementById("travail-Knight");
   const tourKnightDOM = document.getElementById("tour-Knight");
   const tourKnightWarnsdorffDOM = document.getElementById(
@@ -231,13 +247,12 @@ const displayController = (() => {
       yCoord = undefined;
       xCoord_START = undefined;
       yCoord_START = undefined;
-      travailKnightDOM.style.backgroundColor = "";
-      travailKnightDOM.style.fontWeight = "";
-      tourKnightDOM.style.backgroundColor = "";
-      tourKnightDOM.style.pointerEvents = "";
-      tourKnightWarnsdorffDOM.style.backgroundColor = "";
-      tourKnightWarnsdorffDOM.style.pointerEvents = "";
       document.getElementById("START").setAttribute("id", "");
+      squares.forEach((s) => {
+        s.style.pointerEvents = "none";
+      });
+      randomlyPlaceDOM.style.pointerEvents = "none";
+      travailKnightDOM.style.pointerEvents = "none";
     }
   };
   travailKnightDOM.addEventListener("mousedown", () => {
