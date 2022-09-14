@@ -1,4 +1,6 @@
 import ChessSquare from "./ChessSquare";
+import displayController from "./displayController";
+import revealAlgo from "./displayController";
 
 // find Knights Tour from any [x, y] coord on a board of N x N size
 // using Warnsdorff's heuristics + backtracking-based recursion to build the correct path solution
@@ -52,22 +54,20 @@ const KnightsTourWarnsdorff = (x, y, N) => {
     const moves = current.possibleMoves();
     const boardMoves = getBoardMoves(moves, boardCopy);
     if (boardMoves.length === 0) {
-      if (everySquareVisited(boardCopy)) return [[x, y]];
+      if (everySquareVisited(boardCopy)) return [[xCoord, yCoord]];
       else return false;
     } else {
       const warnsdorfffMoves = warnsdorff(boardMoves, boardCopy, boardSize);
-      console.log(current, moves, warnsdorfffMoves);
-
       for (let [nextX, nextY] of warnsdorfffMoves) {
         let path = findPath(nextX, nextY, boardCopy, boardSize);
         if (path) {
-          path.push([nextX, nextY]);
+          path.push([xCoord, yCoord]);
           return path;
         }
       }
       return false;
     }
   };
-  return findPath(x, y, visited, N || 8);
+  return findPath(x, y, visited, N || 8).reverse();
 };
 export default KnightsTourWarnsdorff;

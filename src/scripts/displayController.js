@@ -269,6 +269,11 @@ const displayController = (() => {
     spot.style.backgroundColor = "cadetblue";
     spot.style.opacity = result.indexOf(coord) / result.length + 0.2;
     spot.innerText = result.indexOf(coord) + 1;
+    if (N > 10) {
+      spot.style.fontSize = "8.5px";
+    } else if (N > 20) {
+      spot.style.fontSize = "5px";
+    }
     spot.style.transform = "scaleY(-1)";
     spot.style.display = "flex";
     spot.style.justifyContent = "center";
@@ -298,6 +303,8 @@ const displayController = (() => {
     result.forEach((coord) => {
       showCoords(result, coord);
     });
+    tourKnightDOM.style.pointerEvents = "none";
+    tourKnightWarnsdorffDOM.style.pointerEvents = "none";
     console.log(result);
   };
   tourKnightDOM.addEventListener("mousedown", () => {
@@ -322,18 +329,15 @@ const displayController = (() => {
     result.forEach((coord) => {
       showCoords(result, coord);
     });
+    tourKnightDOM.style.pointerEvents = "none";
+    tourKnightWarnsdorffDOM.style.pointerEvents = "none";
     console.log(result);
   };
   tourKnightWarnsdorffDOM.addEventListener("mousedown", () => {
     tourKnightWarnsdorff(N);
   });
 
-  return {
-    updateN,
-    travailKnight,
-    tourKnight,
-    tourKnightWarnsdorff,
-  };
+  return {};
 })();
 
 export default displayController;

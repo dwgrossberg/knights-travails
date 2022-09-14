@@ -152,8 +152,10 @@ body {
       font-size: 13px;
       color: rgba(0, 0, 0, 0.7);
     }
-    #performance-time {
+    #performance-time,
+    #squares-visited {
       margin-bottom: 5px;
+      height: 10px;
     }
   }
   .which-Knight {
