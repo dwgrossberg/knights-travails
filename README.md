@@ -1,12 +1,16 @@
-~ view a project demo [here](https://dwgrossberg.github.io/knights-travails/) ~
+View a project demo [here](https://dwgrossberg.github.io/knights-travails/) :point_left:
 
 ---
 
 # knights-travails
 
+![knights-travails-gif]()
+
 Finds the shortest possible route for a knight to move from one square to another on a chessboard of variable size N, and returns the Knights path.
 
 # knights-tour
+
+![knights-tour-gif](./src/assets/knights-tour.gif)
 
 Finds a correct solution for a complete Knight's Tour, a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path.
 

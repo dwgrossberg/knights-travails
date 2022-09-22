@@ -54,7 +54,7 @@ const KnightsTour = (x, y, N) => {
       return false;
     }
   };
-  // call the function
+  // call the function & return the reversed array to show the original order
   return findPath(x, y, visited, N || 8).reverse();
 };
 
