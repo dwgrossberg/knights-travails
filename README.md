@@ -4,7 +4,7 @@ View a project demo [here](https://dwgrossberg.github.io/knights-travails/) :poi
 
 # knights-travails
 
-![knights-travails-gif]()
+![knights-travails-gif](./src/assets/knights-travails.gif)
 
 Finds the shortest possible route for a knight to move from one square to another on a chessboard of variable size N, and returns the Knights path.
 
@@ -15,6 +15,8 @@ Finds the shortest possible route for a knight to move from one square to anothe
 Finds a correct solution for a complete Knight's Tour, a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path.
 
 # knights-tour-warnsdorff
+
+![knights-tour-warnsdorff-gif](./src/assets/knights-tour-w.gif)
 
 Finds a correct solution for a complete Knight's Tour, a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path (while significantly improving performance time and reducing memory usage).
 
