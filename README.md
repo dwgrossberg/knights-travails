@@ -12,13 +12,13 @@ Finds the shortest possible route for a knight to move from one square to anothe
 
 ![knights-tour-gif](./src/assets/knights-tour.gif)
 
-Finds a correct solution for a complete Knight's Tour, a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path.
+Finds a correct solution for a complete [Knight's Tour](https://en.wikipedia.org/wiki/Knight%27s_tour), a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path.
 
 # knights-tour-warnsdorff
 
 ![knights-tour-warnsdorff-gif](./src/assets/knights-tour-w.gif)
 
-Finds a correct solution for a complete Knight's Tour, a sequence of moves where a knight visits each square on a chessboard of variable size N only once, and returns the Knight's path (while significantly improving performance time and reducing memory usage).
+Finds a correct solution for a complete Knight's Tour by implementing [Warnsdorff's heuristic](https://en.wikipedia.org/wiki/Knight%27s_tour#Warnsdorff's_rule), and thus significantly improving performance time and reducing memory usage.
 
 ## tech-stack
 
